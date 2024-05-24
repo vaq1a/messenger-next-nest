@@ -1,0 +1,79 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+frontend-next/node_modules
+frontend-next/.pnp
+frontend-next/.pnp.js
+frontend-next/.yarn/install-state.gz
+
+# testing
+frontend-next/coverage
+
+# next.js
+frontend-next/.next/
+frontend-next/out/
+
+# production
+frontend-next/build
+
+# misc
+frontend-next/.DS_Store
+frontend-next/*.pem
+
+# debug
+frontend-next/npm-debug.log*
+frontend-next/yarn-debug.log*
+frontend-next/yarn-error.log*
+
+# local env files
+frontend-next/.env*.local
+
+# vercel
+frontend-next/.vercel
+
+# typescript
+frontend-next/*.tsbuildinfo
+frontend-next/next-env.d.ts
+
+# compiled output
+backend-nest/dist
+backend-nest/node_modules
+
+# docker
+backend-nest/.docker-data
+
+# Logs
+backend-nest/logs
+backend-nest/*.log
+backend-nest/npm-debug.log*
+backend-nest/pnpm-debug.log*
+backend-nest/yarn-debug.log*
+backend-nest/yarn-error.log*
+backend-nest/lerna-debug.log*
+
+# OS
+backend-nest/.DS_Store
+
+# Tests
+backend-nest/coverage
+backend-nest/.nyc_output
+
+# IDEs and editors
+backend-nest/.idea
+backend-nest/.project
+backend-nest/.classpath
+backend-nest/.c9/
+backend-nest/*.launch
+backend-nest/.settings/
+backend-nest/*.sublime-workspace
+
+# IDE - VSCode
+backend-nest/.vscode/*
+backend-nest/!.vscode/settings.json
+backend-nest/!.vscode/tasks.json
+backend-nest/!.vscode/launch.json
+backend-nest/!.vscode/extensions.json
+
+# Enviroment
+backend-nest/.env
+backend-nest/.env.development

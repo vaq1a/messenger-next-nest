@@ -1,0 +1,5 @@
+query GetMessagesForChat($chatId: String!) {
+  getMessagesForChat(chatId: $chatId) {
+    ...Message
+  }
+}

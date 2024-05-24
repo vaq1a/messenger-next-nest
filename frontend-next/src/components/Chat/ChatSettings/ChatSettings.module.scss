@@ -1,0 +1,23 @@
+.container {
+  @apply relative inline-block text-left ml-auto;
+}
+
+.trigger {
+  @apply inline-flex items-center justify-center rounded-full w-10 h-10 bg-primary shadow-create-button;
+}
+
+.iconWrapper {
+  @apply inline-block w-2 h-5 text-white;
+}
+
+.icon {
+  @apply block max-w-full max-h-full w-full h-full;
+}
+
+.items {
+  @apply absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none;
+}
+
+.item {
+  @apply flex w-full items-center rounded-md px-2 py-2 text-sm;
+}

@@ -1,0 +1,8 @@
+  subscription UserStoppedTyping($chatId: String!, $userId: String!) {
+    userStoppedTyping(chatId: $chatId, userId: $userId) {
+        email
+        id
+        name
+        role
+    }
+  }

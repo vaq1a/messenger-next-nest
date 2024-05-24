@@ -1,0 +1,8 @@
+mutation UserStartedTypingMutation($chatId: String!) {
+    userStartedTypingMutation(chatId: $chatId) {
+        email
+        id
+        name
+        role
+    }
+}

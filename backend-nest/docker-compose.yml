@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: vaq1a
+      POSTGRES_PASSWORD: vaq1a
+      POSTGRES_DB: nest-messenger
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - .docker-data/postgres:/var/lib/postgresql/data

@@ -1,0 +1,19 @@
+mutation SendMessage($chatId: String!, $content: String!) {
+  sendMessage(chatId: $chatId, content: $content) {
+    text
+    author {
+        id
+        email
+        name
+    }
+    chat {
+        name
+        authorId
+        participantUsers {
+            email
+            id
+            name
+        }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.card {
+  @apply flex gap-[16px] p-[12px];
+}
+
+.imageWrapper {
+  @apply rounded-[12px] w-[48px] h-[48px] min-w-[48px] overflow-hidden;
+}
+
+.image {
+  @apply w-full h-full object-cover object-center;
+}
+
+.author {
+  @apply text-sm font-semibold text-black;
+}
+
+.message {
+  @apply text-ssm font-semibold text-black;
+}
+
+.time {
+  @apply text-sm font-semibold ml-auto text-black;
+}

@@ -1,0 +1,8 @@
+  subscription UserStartedTyping($chatId: String!, $userId: String!) {
+    userStartedTyping(chatId: $chatId, userId: $userId) {
+        email
+        id
+        name
+        role
+    }
+  }

@@ -1,0 +1,20 @@
+mutation CreateChat($chatName: String!, $companionUserId: String!) {
+  createChat(chatName: $chatName, companionUserId: $companionUserId) {
+    id
+    name
+    author {
+        id
+        email
+        name
+    }
+    messages {
+        authorId
+        chatId
+    }
+    participantUsers {
+        id
+        email
+        name
+    }
+  }
+}

@@ -1,0 +1,7 @@
+subscription LiveUsersInChat($chatId: String!) {
+    liveUsersInChat(chatId: $chatId) {
+      id
+      name
+      email
+    }
+  }

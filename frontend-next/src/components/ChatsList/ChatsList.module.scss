@@ -1,0 +1,11 @@
+.container {
+  @apply border-r-[1px] border-[rgba(0,0,0,0.08)];
+
+  &.containerIndent {
+    @apply p-[24px];
+  }
+}
+
+.list {
+  @apply p-[16px] overflow-y-auto h-[calc(100vh-89px)];
+}

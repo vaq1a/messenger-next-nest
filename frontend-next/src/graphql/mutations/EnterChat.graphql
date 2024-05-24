@@ -1,0 +1,3 @@
+mutation EnterChat($chatId: String!) {
+  enterChat(chatId: $chatId)
+}

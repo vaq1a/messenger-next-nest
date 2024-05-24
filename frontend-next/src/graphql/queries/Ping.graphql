@@ -1,0 +1,6 @@
+query Ping {
+  ping {
+    name
+    surname
+  }
+}

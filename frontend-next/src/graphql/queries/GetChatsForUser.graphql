@@ -1,0 +1,22 @@
+query GetChatsForUser {
+  getChatsForUser {
+    id
+    name
+    author {
+        id
+        name
+        email
+    }
+    participantUsers {
+        id
+        name
+        email
+    }
+    messages {
+        id
+        authorId
+        chatId
+        text
+    }
+  }
+}

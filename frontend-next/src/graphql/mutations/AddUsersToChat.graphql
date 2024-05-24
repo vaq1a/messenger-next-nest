@@ -1,0 +1,20 @@
+mutation AddUsersToChat($chatId: String!, $userIds: [String!]!) {
+  addUsersToChat(chatId: $chatId, userIds: $userIds) {
+    id
+    name
+    author {
+        id
+        email
+        name
+    }
+    messages {
+        authorId
+        chatId
+    }
+    participantUsers {
+        id
+        email
+        name
+    }
+  }
+}

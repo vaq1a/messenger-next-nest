@@ -1,0 +1,16 @@
+fragment Message on Message {
+      id
+      authorId
+      chatId
+      text
+      author {
+        id
+        name
+        email
+      }
+      chat {
+        id
+        name
+        authorId
+      }
+}

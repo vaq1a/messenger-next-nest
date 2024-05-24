@@ -1,0 +1,674 @@
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+type AccessTokenModel {
+  accessToken: String!
+}
+
+type Chat {
+  _count: ChatCount!
+  author: User!
+  authorId: String!
+  createdAt: DateTime!
+  id: ID!
+  messages: [Message!]
+  name: String!
+  participantUsers: [User!]
+  updatedAt: DateTime!
+}
+
+type ChatCount {
+  messages: Int!
+  participantUsers: Int!
+}
+
+type ChatCountAggregate {
+  _all: Int!
+  authorId: Int!
+  createdAt: Int!
+  id: Int!
+  name: Int!
+  updatedAt: Int!
+}
+
+input ChatCreateManyAuthorInput {
+  createdAt: DateTime
+  id: String
+  name: String!
+  updatedAt: DateTime
+}
+
+input ChatCreateManyAuthorInputEnvelope {
+  data: [ChatCreateManyAuthorInput!]!
+  skipDuplicates: Boolean
+}
+
+input ChatCreateNestedManyWithoutAuthorInput {
+  connect: [ChatWhereUniqueInput!]
+  connectOrCreate: [ChatCreateOrConnectWithoutAuthorInput!]
+  create: [ChatCreateWithoutAuthorInput!]
+  createMany: ChatCreateManyAuthorInputEnvelope
+}
+
+input ChatCreateNestedManyWithoutParticipantUsersInput {
+  connect: [ChatWhereUniqueInput!]
+  connectOrCreate: [ChatCreateOrConnectWithoutParticipantUsersInput!]
+  create: [ChatCreateWithoutParticipantUsersInput!]
+}
+
+input ChatCreateNestedOneWithoutMessagesInput {
+  connect: ChatWhereUniqueInput
+  connectOrCreate: ChatCreateOrConnectWithoutMessagesInput
+  create: ChatCreateWithoutMessagesInput
+}
+
+input ChatCreateOrConnectWithoutAuthorInput {
+  create: ChatCreateWithoutAuthorInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatCreateOrConnectWithoutMessagesInput {
+  create: ChatCreateWithoutMessagesInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatCreateOrConnectWithoutParticipantUsersInput {
+  create: ChatCreateWithoutParticipantUsersInput!
+  where: ChatWhereUniqueInput!
+}
+
+input ChatCreateWithoutAuthorInput {
+  createdAt: DateTime
+  id: String
+  messages: MessageCreateNestedManyWithoutChatInput
+  name: String!
+  participantUsers: UserCreateNestedManyWithoutParticipantChatsInput
+  updatedAt: DateTime
+}
+
+input ChatCreateWithoutMessagesInput {
+  author: UserCreateNestedOneWithoutCreatedChatsInput!
+  createdAt: DateTime
+  id: String
+  name: String!
+  participantUsers: UserCreateNestedManyWithoutParticipantChatsInput
+  updatedAt: DateTime
+}
+
+input ChatCreateWithoutParticipantUsersInput {
+  author: UserCreateNestedOneWithoutCreatedChatsInput!
+  createdAt: DateTime
+  id: String
+  messages: MessageCreateNestedManyWithoutChatInput
+  name: String!
+  updatedAt: DateTime
+}
+
+input ChatListRelationFilter {
+  every: ChatWhereInput
+  none: ChatWhereInput
+  some: ChatWhereInput
+}
+
+type ChatMaxAggregate {
+  authorId: String
+  createdAt: DateTime
+  id: String
+  name: String
+  updatedAt: DateTime
+}
+
+type ChatMinAggregate {
+  authorId: String
+  createdAt: DateTime
+  id: String
+  name: String
+  updatedAt: DateTime
+}
+
+input ChatRelationFilter {
+  is: ChatWhereInput
+  isNot: ChatWhereInput
+}
+
+input ChatWhereInput {
+  AND: [ChatWhereInput!]
+  NOT: [ChatWhereInput!]
+  OR: [ChatWhereInput!]
+  author: UserRelationFilter
+  authorId: StringFilter
+  createdAt: DateTimeFilter
+  id: StringFilter
+  messages: MessageListRelationFilter
+  name: StringFilter
+  participantUsers: UserListRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+input ChatWhereUniqueInput {
+  AND: [ChatWhereInput!]
+  NOT: [ChatWhereInput!]
+  OR: [ChatWhereInput!]
+  author: UserRelationFilter
+  authorId: StringFilter
+  createdAt: DateTimeFilter
+  id: String
+  messages: MessageListRelationFilter
+  name: StringFilter
+  participantUsers: UserListRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input EnumRoleFilter {
+  equals: Role
+  in: [Role!]
+  not: NestedEnumRoleFilter
+  notIn: [Role!]
+}
+
+type Message {
+  author: User!
+  authorId: String!
+  chat: Chat!
+  chatId: String!
+  createdAt: DateTime!
+  id: ID!
+  text: String!
+  updatedAt: DateTime!
+}
+
+type MessageCountAggregate {
+  _all: Int!
+  authorId: Int!
+  chatId: Int!
+  createdAt: Int!
+  id: Int!
+  text: Int!
+  updatedAt: Int!
+}
+
+input MessageCreateManyAuthorInput {
+  chatId: String!
+  createdAt: DateTime
+  id: String
+  text: String!
+  updatedAt: DateTime
+}
+
+input MessageCreateManyAuthorInputEnvelope {
+  data: [MessageCreateManyAuthorInput!]!
+  skipDuplicates: Boolean
+}
+
+input MessageCreateManyChatInput {
+  authorId: String!
+  createdAt: DateTime
+  id: String
+  text: String!
+  updatedAt: DateTime
+}
+
+input MessageCreateManyChatInputEnvelope {
+  data: [MessageCreateManyChatInput!]!
+  skipDuplicates: Boolean
+}
+
+input MessageCreateNestedManyWithoutAuthorInput {
+  connect: [MessageWhereUniqueInput!]
+  connectOrCreate: [MessageCreateOrConnectWithoutAuthorInput!]
+  create: [MessageCreateWithoutAuthorInput!]
+  createMany: MessageCreateManyAuthorInputEnvelope
+}
+
+input MessageCreateNestedManyWithoutChatInput {
+  connect: [MessageWhereUniqueInput!]
+  connectOrCreate: [MessageCreateOrConnectWithoutChatInput!]
+  create: [MessageCreateWithoutChatInput!]
+  createMany: MessageCreateManyChatInputEnvelope
+}
+
+input MessageCreateOrConnectWithoutAuthorInput {
+  create: MessageCreateWithoutAuthorInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageCreateOrConnectWithoutChatInput {
+  create: MessageCreateWithoutChatInput!
+  where: MessageWhereUniqueInput!
+}
+
+input MessageCreateWithoutAuthorInput {
+  chat: ChatCreateNestedOneWithoutMessagesInput!
+  createdAt: DateTime
+  id: String
+  text: String!
+  updatedAt: DateTime
+}
+
+input MessageCreateWithoutChatInput {
+  author: UserCreateNestedOneWithoutMessagesInput!
+  createdAt: DateTime
+  id: String
+  text: String!
+  updatedAt: DateTime
+}
+
+input MessageListRelationFilter {
+  every: MessageWhereInput
+  none: MessageWhereInput
+  some: MessageWhereInput
+}
+
+type MessageMaxAggregate {
+  authorId: String
+  chatId: String
+  createdAt: DateTime
+  id: String
+  text: String
+  updatedAt: DateTime
+}
+
+type MessageMinAggregate {
+  authorId: String
+  chatId: String
+  createdAt: DateTime
+  id: String
+  text: String
+  updatedAt: DateTime
+}
+
+input MessageWhereInput {
+  AND: [MessageWhereInput!]
+  NOT: [MessageWhereInput!]
+  OR: [MessageWhereInput!]
+  author: UserRelationFilter
+  authorId: StringFilter
+  chat: ChatRelationFilter
+  chatId: StringFilter
+  createdAt: DateTimeFilter
+  id: StringFilter
+  text: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+input MessageWhereUniqueInput {
+  AND: [MessageWhereInput!]
+  NOT: [MessageWhereInput!]
+  OR: [MessageWhereInput!]
+  author: UserRelationFilter
+  authorId: StringFilter
+  chat: ChatRelationFilter
+  chatId: StringFilter
+  createdAt: DateTimeFilter
+  id: String
+  text: StringFilter
+  updatedAt: DateTimeFilter
+}
+
+type Mutation {
+  addUsersToChat(chatId: String!, userIds: [String!]!): Chat!
+  createChat(chatName: String!, companionUserId: String!): Chat!
+  deleteChat(chatId: String!): String!
+  enterChat(chatId: String!): Boolean!
+  exiteFromChat(chatId: String!): Boolean!
+  getNewTokens: AccessTokenModel!
+  leaveChat(chatId: String!): Boolean!
+  sendMessage(chatId: String!, content: String!): Message!
+  signIn(data: SignInInput!): AccessTokenModel!
+  signUp(data: UserCreateInput!): UserResponse!
+  uploadImage(image: Upload!): Boolean!
+  userStartedTypingMutation(chatId: String!): UserResponse!
+  userStoppedTypingMutation(chatId: String!): UserResponse!
+}
+
+input NestedDateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: NestedDateTimeFilter
+  notIn: [DateTime!]
+}
+
+input NestedEnumRoleFilter {
+  equals: Role
+  in: [Role!]
+  not: NestedEnumRoleFilter
+  notIn: [Role!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+type PingResponse {
+  name: String!
+  surname: String!
+}
+
+type Query {
+  getAllUsers: [UserResponse!]!
+  getChat(chatId: String!): Chat!
+  getChatsForUser: [Chat!]!
+  getMessagesForChat(chatId: String!): [Message!]!
+  getUser: UserResponse!
+  ping: PingResponse!
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+type Subscription {
+  liveUsersInChat(chatId: String!): [User!]
+  newMessage(chatId: String!): Message
+  userStartedTyping(chatId: String!, userId: String!): UserResponse
+  userStoppedTyping(chatId: String!, userId: String!): UserResponse
+}
+
+type Tokens {
+  accessToken: String!
+  createdAt: DateTime!
+  id: ID!
+  refreshToken: String!
+  updatedAt: DateTime!
+  user: User!
+  userId: String!
+}
+
+input TokensCreateNestedOneWithoutUserInput {
+  connect: TokensWhereUniqueInput
+  connectOrCreate: TokensCreateOrConnectWithoutUserInput
+  create: TokensCreateWithoutUserInput
+}
+
+input TokensCreateOrConnectWithoutUserInput {
+  create: TokensCreateWithoutUserInput!
+  where: TokensWhereUniqueInput!
+}
+
+input TokensCreateWithoutUserInput {
+  accessToken: String!
+  createdAt: DateTime
+  id: String
+  refreshToken: String!
+  updatedAt: DateTime
+}
+
+input TokensNullableRelationFilter {
+  is: TokensWhereInput
+  isNot: TokensWhereInput
+}
+
+input TokensWhereInput {
+  AND: [TokensWhereInput!]
+  NOT: [TokensWhereInput!]
+  OR: [TokensWhereInput!]
+  accessToken: StringFilter
+  createdAt: DateTimeFilter
+  id: StringFilter
+  refreshToken: StringFilter
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  userId: StringFilter
+}
+
+input TokensWhereUniqueInput {
+  AND: [TokensWhereInput!]
+  NOT: [TokensWhereInput!]
+  OR: [TokensWhereInput!]
+  accessToken: StringFilter
+  createdAt: DateTimeFilter
+  id: String
+  refreshToken: String
+  updatedAt: DateTimeFilter
+  user: UserRelationFilter
+  userId: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+type User {
+  _count: UserCount!
+  createdAt: DateTime!
+  createdChats: [Chat!]
+  email: String!
+  id: ID!
+  messages: [Message!]
+  name: String!
+  participantChats: [Chat!]
+  role: Role!
+  tokens: Tokens
+  updatedAt: DateTime!
+}
+
+type UserCount {
+  createdChats: Int!
+  messages: Int!
+  participantChats: Int!
+}
+
+type UserCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  email: Int!
+  id: Int!
+  name: Int!
+  role: Int!
+  updatedAt: Int!
+}
+
+input UserCreateInput {
+  createdAt: DateTime
+  createdChats: ChatCreateNestedManyWithoutAuthorInput
+  email: String!
+  id: String
+  messages: MessageCreateNestedManyWithoutAuthorInput
+  name: String!
+  participantChats: ChatCreateNestedManyWithoutParticipantUsersInput
+  password: String!
+  role: Role
+  tokens: TokensCreateNestedOneWithoutUserInput
+  updatedAt: DateTime
+}
+
+input UserCreateNestedManyWithoutParticipantChatsInput {
+  connect: [UserWhereUniqueInput!]
+  connectOrCreate: [UserCreateOrConnectWithoutParticipantChatsInput!]
+  create: [UserCreateWithoutParticipantChatsInput!]
+}
+
+input UserCreateNestedOneWithoutCreatedChatsInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutCreatedChatsInput
+  create: UserCreateWithoutCreatedChatsInput
+}
+
+input UserCreateNestedOneWithoutMessagesInput {
+  connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutMessagesInput
+  create: UserCreateWithoutMessagesInput
+}
+
+input UserCreateOrConnectWithoutCreatedChatsInput {
+  create: UserCreateWithoutCreatedChatsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutMessagesInput {
+  create: UserCreateWithoutMessagesInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutParticipantChatsInput {
+  create: UserCreateWithoutParticipantChatsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateWithoutCreatedChatsInput {
+  createdAt: DateTime
+  email: String!
+  id: String
+  messages: MessageCreateNestedManyWithoutAuthorInput
+  name: String!
+  participantChats: ChatCreateNestedManyWithoutParticipantUsersInput
+  password: String!
+  role: Role
+  tokens: TokensCreateNestedOneWithoutUserInput
+  updatedAt: DateTime
+}
+
+input UserCreateWithoutMessagesInput {
+  createdAt: DateTime
+  createdChats: ChatCreateNestedManyWithoutAuthorInput
+  email: String!
+  id: String
+  name: String!
+  participantChats: ChatCreateNestedManyWithoutParticipantUsersInput
+  password: String!
+  role: Role
+  tokens: TokensCreateNestedOneWithoutUserInput
+  updatedAt: DateTime
+}
+
+input UserCreateWithoutParticipantChatsInput {
+  createdAt: DateTime
+  createdChats: ChatCreateNestedManyWithoutAuthorInput
+  email: String!
+  id: String
+  messages: MessageCreateNestedManyWithoutAuthorInput
+  name: String!
+  password: String!
+  role: Role
+  tokens: TokensCreateNestedOneWithoutUserInput
+  updatedAt: DateTime
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
+}
+
+type UserMaxAggregate {
+  createdAt: DateTime
+  email: String
+  id: String
+  name: String
+  role: Role
+  updatedAt: DateTime
+}
+
+type UserMinAggregate {
+  createdAt: DateTime
+  email: String
+  id: String
+  name: String
+  role: Role
+  updatedAt: DateTime
+}
+
+input UserRelationFilter {
+  is: UserWhereInput
+  isNot: UserWhereInput
+}
+
+type UserResponse {
+  email: String!
+  id: ID!
+  name: String!
+  role: Role!
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  createdAt: DateTimeFilter
+  createdChats: ChatListRelationFilter
+  email: StringFilter
+  id: StringFilter
+  messages: MessageListRelationFilter
+  name: StringFilter
+  participantChats: ChatListRelationFilter
+  password: StringFilter
+  role: EnumRoleFilter
+  tokens: TokensNullableRelationFilter
+  updatedAt: DateTimeFilter
+}
+
+input UserWhereUniqueInput {
+  AND: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  createdAt: DateTimeFilter
+  createdChats: ChatListRelationFilter
+  email: String
+  id: String
+  messages: MessageListRelationFilter
+  name: StringFilter
+  participantChats: ChatListRelationFilter
+  password: StringFilter
+  role: EnumRoleFilter
+  tokens: TokensNullableRelationFilter
+  updatedAt: DateTimeFilter
+}
+
